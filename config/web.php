@@ -3,6 +3,8 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
+    'language' => 'ru-RU',
+    'timeZone' => 'Asia/Krasnoyarsk',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
