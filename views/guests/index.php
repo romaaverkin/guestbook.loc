@@ -10,6 +10,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\LinkPager;
 ?>
         <div class="container">
             <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
@@ -53,6 +54,18 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
             </div>
+            
+            <h1>Countries</h1>
+            <ul>
+                    <?php foreach ($countries as $country): ?>
+                    <li>
+                        <?= Html::encode("{$country->name} ({$country->code})") ?>:
+                    <?= $country->population ?>
+                    </li>
+            <?php endforeach; ?>
+            </ul>
+
+            <?= LinkPager::widget(['pagination' => $pagination]) ?>
            
         </div>
         

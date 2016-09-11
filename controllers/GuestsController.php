@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\GuestsForm;
+use yii\data\Pagination;
+use app\models\Country;
 
 class GuestsController extends Controller
 {
@@ -20,8 +22,26 @@ class GuestsController extends Controller
 
             return $this->render('entry-confirm', ['model' => $model]);
         } else {
+            $query = Country::find();
+
+            $pagination = new Pagination([
+                'defaultPageSize' => 5,
+                'totalCount' => $query->count(),
+            ]);
+
+            $countries = $query->orderBy('name')
+                    ->offset($pagination->offset)
+                    ->limit($pagination->limit)
+                    ->all();
+
+            return $this->render('index', [
+                        'countries' => $countries,
+                        'pagination' => $pagination,
+                        'model' => $model,
+                        'pagetitle' => $pagetitle
+            ]);
             // либо страница отображается первый раз, либо есть ошибка в данных
-            return $this->render('index', ['model' => $model, 'pagetitle' => $pagetitle]);
+//            return $this->render('index', ['model' => $model, 'pagetitle' => $pagetitle]);
         }
     }
 
