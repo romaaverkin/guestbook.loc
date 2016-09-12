@@ -11,6 +11,8 @@ use app\models\Country;
 class GuestsController extends Controller
 {
 
+    public $layout = 'basic';
+
     public function actionIndex()
     {
         $pagetitle = 'Гостевая книга';
