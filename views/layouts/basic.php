@@ -10,7 +10,7 @@ AppAsset::register($this);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title><?= $this->title ?></title>
     <?php $this->head() ?>
 </head>
 <body>

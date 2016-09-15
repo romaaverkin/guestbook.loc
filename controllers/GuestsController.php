@@ -24,6 +24,9 @@ class GuestsController extends Controller
 
             return $this->render('entry-confirm', ['model' => $model]);
         } else {
+            $this->view->title = "Гостевая книга";
+            $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
+            $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
             $query = Country::find();
 
             $pagination = new Pagination([
