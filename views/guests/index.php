@@ -2,7 +2,7 @@
 <html lang="ru-RU">
     <head>
         <meta charset="UTF-8">
-        <?php $this->title = "Гостевая книга"; ?>
+        <?php // $this->title = "Гостевая книга"; ?>
         <!--<title>Гостевая книга</title>-->
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     </head>
