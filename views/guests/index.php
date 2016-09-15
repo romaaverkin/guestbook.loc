@@ -11,16 +11,19 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
+use yii\captcha\Captcha;
 ?>
         <div class="container">
             <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
             <?php $form = ActiveForm::begin(); ?>
 
-                <?= $form->field($model, 'name')->label('Ваше имя: *') ?>
+                <?= $form->field($model, 'name') ?>
 
-                <?= $form->field($model, 'email')->label('Ваш e-mail: *') ?>
+                <?= $form->field($model, 'email') ?>
             
-                <?= $form->field($model, 'message')->textarea(['rows' => 5, 'cols' => 50])->label('Текст сообщения: *') ?>
+                <?= $form->field($model, 'message')->textarea(['rows' => 5]) ?>
+            
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
