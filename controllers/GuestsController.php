@@ -18,12 +18,19 @@ class GuestsController extends Controller
         $pagetitle = 'Гостевая книга';
         $model = new GuestsForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->validate()){
             // данные в $model удачно проверены
             // делаем что-то полезное с $model ...
 
-            return $this->render('entry-confirm', ['model' => $model]);
-        } else {
+//            return $this->render('entry-confirm', ['model' => $model]);
+//        } else {
+            Yii::$app->session->setFlash('success', 'Данные приняты');
+                return $this->refresh(); //решаем проблему f5
+            }else{
+                Yii::$app->session->setFlash('error', 'Ошибка');
+            }
+        }
             $this->view->title = "Гостевая книга";
             $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
             $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
@@ -47,7 +54,6 @@ class GuestsController extends Controller
             ]);
             // либо страница отображается первый раз, либо есть ошибка в данных
 //            return $this->render('index', ['model' => $model, 'pagetitle' => $pagetitle]);
-        }
     }
 
     public function actionEdit()

@@ -7,24 +7,33 @@
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     </head>
     <body>
-<?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use yii\widgets\LinkPager;
-use yii\captcha\Captcha;
-?>
+    <?php
+        use yii\helpers\Html;
+        use yii\widgets\ActiveForm;
+        use yii\widgets\LinkPager;
+        use yii\captcha\Captcha;
+    ?>
         <div class="container">
+            <?php if( Yii::$app->session->hasFlash('success') ): ?>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo Yii::$app->session->getFlash('success'); ?>
+                </div>
+            <?php endif;?>
+
+            <?php if( Yii::$app->session->hasFlash('error') ): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo Yii::$app->session->getFlash('error'); ?>
+                </div>
+            <?php endif;?>
+            
             <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
             <?php $form = ActiveForm::begin(); ?>
-
                 <?= $form->field($model, 'name') ?>
-
-                <?= $form->field($model, 'email') ?>
-            
-                <?= $form->field($model, 'message')->textarea(['rows' => 5]) ?>
-            
+                <?= $form->field($model, 'email') ?>          
+                <?= $form->field($model, 'message')->textarea(['rows' => 5]) ?>            
                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
-
                 <div class="form-group">
                     <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
                 </div>
