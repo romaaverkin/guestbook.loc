@@ -41,19 +41,20 @@
             <?php ActiveForm::end(); ?>
             
             <div class="text-right">
-                <b>Всего сообщений:</b> <i class="badge">0</i>
+                <!--<b>Всего сообщений:</b> <i class="badge">0</i>-->
+                <b>Всего сообщений:</b> <i class="badge"><?= $pagination->totalCount ?></i>
             </div><br>
             <div class="messages">
+                <?php foreach ($messageall as $message): ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <span>Черный плащ</span>
-                            <span class="pull-right label label-info">23:59 / 11.09.2016</span>
+                            <span><?= Html::encode("{$message->name}") ?>:</span>
+                            <span class="pull-right label label-info"><?= Html::encode("{$message->date}") ?></span>
                         </h3>
                     </div>
                     <div class="panel-body">
-                        Всем привет!
-                        Ну-ка от винта!
+                        <?= Html::encode("{$message->post}") ?>
                         <hr>
                         <div class="pull-right">
                             <a class="btn btn-info" href="#">
@@ -65,17 +66,8 @@
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
             </div>
-            
-            <h1>Countries</h1>
-            <ul>
-                    <?php foreach ($countries as $country): ?>
-                    <li>
-                        <?= Html::encode("{$country->name} ({$country->code})") ?>:
-                    <?= $country->population ?>
-                    </li>
-            <?php endforeach; ?>
-            </ul>
 
             <?= LinkPager::widget(['pagination' => $pagination]) ?>
            

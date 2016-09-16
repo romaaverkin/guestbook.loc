@@ -29,7 +29,7 @@ class GuestsForm extends Model
             [['name', 'message'], 'trim'],
             ['email', 'email'],
 //            ['name', 'match', 'pattern' => '/^[a-z]\w*$/i'],
-            [ 'name', 'string', 'length' => [3,20] ],
+            [ 'name', 'string', 'length' => [3,30] ],
             ['message', 'string', 'length' => [3,1000]],
             ['verifyCode', 'captcha'],
         ];

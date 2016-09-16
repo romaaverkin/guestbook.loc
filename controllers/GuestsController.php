@@ -6,7 +6,8 @@ use Yii;
 use yii\web\Controller;
 use app\models\GuestsForm;
 use yii\data\Pagination;
-use app\models\Country;
+//use app\models\Country;
+use app\models\Post;
 
 class GuestsController extends Controller
 {
@@ -34,20 +35,21 @@ class GuestsController extends Controller
             $this->view->title = "Гостевая книга";
             $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
             $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
-            $query = Country::find();
+            $query = Post::find();
+//            $query = Country::find();
 
             $pagination = new Pagination([
-                'defaultPageSize' => 5,
+                'defaultPageSize' => 2,
                 'totalCount' => $query->count(),
             ]);
 
-            $countries = $query->orderBy('name')
+            $messageall = $query->orderBy('date')
                     ->offset($pagination->offset)
                     ->limit($pagination->limit)
                     ->all();
 
             return $this->render('index', [
-                        'countries' => $countries,
+                        'messageall' => $messageall,
                         'pagination' => $pagination,
                         'model' => $model,
                         'pagetitle' => $pagetitle
