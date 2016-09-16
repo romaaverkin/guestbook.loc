@@ -43,7 +43,7 @@ class GuestsController extends Controller
                 'totalCount' => $query->count(),
             ]);
 
-            $messageall = $query->orderBy('date')
+            $messageall = $query->orderBy(['date' => SORT_DESC])
                     ->offset($pagination->offset)
                     ->limit($pagination->limit)
                     ->all();
