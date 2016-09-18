@@ -16,7 +16,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-    <h1>Hello, BASIC!</h1>
+<!--    <h1>Гостевая книга</h1>-->
     <?= $content ?>
 
 <?php $this->endBody() ?>
