@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'language' => 'ru-RU',
+    'defaultRoute' => 'guests',
     'timeZone' => 'Asia/Krasnoyarsk',
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
