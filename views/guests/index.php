@@ -14,6 +14,7 @@
 //        use yii\captcha\Captcha;
     ?>
         <div class="container">
+            <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
             <?php if( Yii::$app->session->hasFlash('success') ): ?>
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -28,7 +29,6 @@
                 </div>
             <?php endif;?>
             
-            <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
             <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'email') ?>          
@@ -55,15 +55,6 @@
                     </div>
                     <div class="panel-body">
                         <?= Html::encode("{$post->post}") ?>
-                        <hr>
-                        <div class="pull-right">
-                            <a class="btn btn-info" href="#">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </a>
-                            <button class="btn btn-danger">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </button>
-                        </div>
                     </div>
                 </div>
                 <?php endforeach; ?>
