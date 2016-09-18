@@ -6,6 +6,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!doctype html>
+<!--Настроим шаблон-->
 <html lang="<?= Yii::$app->language ?>">
     <head>
         <meta charset="UTF-8">

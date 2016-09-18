@@ -11,7 +11,8 @@
     ?>
         <div class="container">
             <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
-            <?php if( Yii::$app->session->hasFlash('success') ): ?>
+            <!--сообщения об успехе или неудачи-->
+            <?php if( Yii::$app->session->hasFlash('success') ): ?> 
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <?php echo Yii::$app->session->getFlash('success'); ?>
@@ -25,17 +26,18 @@
                 </div>
             <?php endif;?>
             
+            <!--Создадим форму-->
             <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'email') ?>          
                 <?= $form->field($model, 'post')->textarea(['rows' => 5]) ?>            
-                <?//= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
                 <div class="form-group">
                     <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
             
+            <!--Вывод сообщений из БД-->
             <div class="text-right">
                 <b>Всего сообщений:</b> <i class="badge"><?= $pagination->totalCount ?></i>
             </div><br>

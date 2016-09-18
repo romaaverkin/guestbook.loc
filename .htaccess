@@ -1,3 +1,4 @@
+#Настроил ЧПУ
 Options +FollowSymLinks
 IndexIgnore */*
 RewriteEngine on

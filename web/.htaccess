@@ -1,3 +1,4 @@
+#Настроил ЧПУ
 RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f

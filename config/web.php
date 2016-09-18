@@ -3,9 +3,9 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'language' => 'ru-RU',
+    'language' => 'ru-RU', //руссий язык
     'defaultRoute' => 'guests',
-    'timeZone' => 'Asia/Krasnoyarsk',
+    'timeZone' => 'Asia/Krasnoyarsk', //временная зона
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -43,7 +43,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'urlManager' => [
+        'urlManager' => [ //расскоментировал данный блок
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
