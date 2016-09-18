@@ -11,7 +11,7 @@
         use yii\helpers\Html;
         use yii\widgets\ActiveForm;
         use yii\widgets\LinkPager;
-        use yii\captcha\Captcha;
+//        use yii\captcha\Captcha;
     ?>
         <div class="container">
             <?php if( Yii::$app->session->hasFlash('success') ): ?>
@@ -32,8 +32,8 @@
             <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'email') ?>          
-                <?= $form->field($model, 'message')->textarea(['rows' => 5]) ?>            
-                <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
+                <?= $form->field($model, 'post')->textarea(['rows' => 5]) ?>            
+                <?//= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
                 <div class="form-group">
                     <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
                 </div>
@@ -45,16 +45,16 @@
                 <b>Всего сообщений:</b> <i class="badge"><?= $pagination->totalCount ?></i>
             </div><br>
             <div class="messages">
-                <?php foreach ($messageall as $message): ?>
+                <?php foreach ($postall as $post): ?>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <span><?= Html::encode("{$message->name}") ?>:</span>
-                            <span class="pull-right label label-info"><?= Html::encode("{$message->date}") ?></span>
+                            <span><?= Html::encode("{$post->name}") ?>:</span>
+                            <span class="pull-right label label-info"><?= Html::encode("{$post->date}") ?></span>
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <?= Html::encode("{$message->post}") ?>
+                        <?= Html::encode("{$post->post}") ?>
                         <hr>
                         <div class="pull-right">
                             <a class="btn btn-info" href="#">

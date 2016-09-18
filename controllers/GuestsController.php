@@ -18,9 +18,17 @@ class GuestsController extends Controller
     {
         $pagetitle = 'Гостевая книга';
         $model = new GuestsForm();
+//        $model->name = 'Автор';
+//        $model->email = 'test@test.com';
+//        $model->post = 'Тестовое сообщения';
+//        echo '<pre>';
+//        print_r($model);
+//        echo '</pre>';
+//        exit();
+//        $model->save();
 
         if ($model->load(Yii::$app->request->post())) {
-            if($model->validate()){
+            if($model->save()){
             // данные в $model удачно проверены
             // делаем что-то полезное с $model ...
 
@@ -43,13 +51,13 @@ class GuestsController extends Controller
                 'totalCount' => $query->count(),
             ]);
 
-            $messageall = $query->orderBy(['date' => SORT_DESC])
+            $postall = $query->orderBy(['date' => SORT_DESC])
                     ->offset($pagination->offset)
                     ->limit($pagination->limit)
                     ->all();
 
             return $this->render('index', [
-                        'messageall' => $messageall,
+                        'postall' => $postall,
                         'pagination' => $pagination,
                         'model' => $model,
                         'pagetitle' => $pagetitle

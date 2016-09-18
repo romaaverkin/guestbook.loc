@@ -2,36 +2,42 @@
 
 namespace app\models;
 
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
-class GuestsForm extends Model
+//use yii\base\Model;
+
+class GuestsForm extends ActiveRecord
 {
 
-    public $name;
-    public $email;
-    public $message;
-    public $verifyCode;
+//    public $name;
+//    public $email;
+//    public $message;
+//    public $verifyCode;
+    public static function tableName()
+    {
+        return 'post';
+    }
 
     public function attributeLabels()
     {
         return [
             'name' => 'Ваше имя: *',
             'email' => 'Ваш e-mail: *',
-            'message' => 'Текст сообщения: *',
-            'verifyCode' => 'Verification Code',
+            'post' => 'Текст сообщения: *',
+//            'verifyCode' => 'Verification Code',
         ];
     }
 
     public function rules()
     {
         return [
-            [['name', 'email', 'message'], 'required'],
-            [['name', 'message'], 'trim'],
+            [['name', 'email', 'post'], 'required'],
+            [['name', 'post'], 'trim'],
             ['email', 'email'],
 //            ['name', 'match', 'pattern' => '/^[a-z]\w*$/i'],
-            [ 'name', 'string', 'length' => [3,30] ],
-            ['message', 'string', 'length' => [3,1000]],
-            ['verifyCode', 'captcha'],
+            [ 'name', 'string', 'length' => [3, 30]],
+            ['post', 'string', 'length' => [3, 1000]],
+//            ['verifyCode', 'captcha'],
         ];
     }
 
