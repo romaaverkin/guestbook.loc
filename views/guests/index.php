@@ -2,16 +2,12 @@
 <html lang="ru-RU">
     <head>
         <meta charset="UTF-8">
-        <?php // $this->title = "Гостевая книга"; ?>
-        <!--<title>Гостевая книга</title>-->
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     </head>
     <body>
     <?php
         use yii\helpers\Html;
         use yii\widgets\ActiveForm;
         use yii\widgets\LinkPager;
-//        use yii\captcha\Captcha;
     ?>
         <div class="container">
             <h1 class="text-center"><?= Html::encode($pagetitle) ?></h1>
@@ -41,7 +37,6 @@
             <?php ActiveForm::end(); ?>
             
             <div class="text-right">
-                <!--<b>Всего сообщений:</b> <i class="badge">0</i>-->
                 <b>Всего сообщений:</b> <i class="badge"><?= $pagination->totalCount ?></i>
             </div><br>
             <div class="messages">
@@ -60,11 +55,7 @@
                 <?php endforeach; ?>
             </div>
 
-            <?= LinkPager::widget(['pagination' => $pagination]) ?>
-           
-        </div>
-        
-<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+            <?= LinkPager::widget(['pagination' => $pagination]) ?>           
+        </div>       
     </body>
 </html>

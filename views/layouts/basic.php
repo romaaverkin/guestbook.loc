@@ -7,19 +7,18 @@ AppAsset::register($this);
 <?php $this->beginPage() ?>
 <!doctype html>
 <html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $this->title ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?= $this->title ?></title>
+        <?php $this->head() ?>
+    </head>
+    <body>
+        <?php $this->beginBody() ?>
 
-<!--    <h1>Гостевая книга</h1>-->
-    <?= $content ?>
+        <?= $content ?>
 
-<?php $this->endBody() ?>
-</body>
+        <?php $this->endBody() ?>
+    </body>
 </html>
 <?php $this->endPage() ?>

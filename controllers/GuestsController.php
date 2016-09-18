@@ -6,7 +6,6 @@ use Yii;
 use yii\web\Controller;
 use app\models\GuestsForm;
 use yii\data\Pagination;
-//use app\models\Country;
 use app\models\Post;
 
 class GuestsController extends Controller
@@ -18,52 +17,36 @@ class GuestsController extends Controller
     {
         $pagetitle = 'Гостевая книга';
         $model = new GuestsForm();
-//        $model->name = 'Автор';
-//        $model->email = 'test@test.com';
-//        $model->post = 'Тестовое сообщения';
-//        echo '<pre>';
-//        print_r($model);
-//        echo '</pre>';
-//        exit();
-//        $model->save();
 
         if ($model->load(Yii::$app->request->post())) {
-            if($model->save()){
-            // данные в $model удачно проверены
-            // делаем что-то полезное с $model ...
-
-//            return $this->render('entry-confirm', ['model' => $model]);
-//        } else {
-            Yii::$app->session->setFlash('success', 'Данные приняты');
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', 'Данные приняты');
                 return $this->refresh(); //решаем проблему f5
-            }else{
+            } else {
                 Yii::$app->session->setFlash('error', 'Ошибка');
             }
         }
-            $this->view->title = "Гостевая книга";
-            $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
-            $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
-            $query = Post::find();
-//            $query = Country::find();
+        $this->view->title = "Гостевая книга";
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
+        $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
+        $query = Post::find();
 
-            $pagination = new Pagination([
-                'defaultPageSize' => 2,
-                'totalCount' => $query->count(),
-            ]);
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => $query->count(),
+        ]);
 
-            $postall = $query->orderBy(['date' => SORT_DESC])
-                    ->offset($pagination->offset)
-                    ->limit($pagination->limit)
-                    ->all();
+        $postall = $query->orderBy(['date' => SORT_DESC])
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
 
-            return $this->render('index', [
-                        'postall' => $postall,
-                        'pagination' => $pagination,
-                        'model' => $model,
-                        'pagetitle' => $pagetitle
-            ]);
-            // либо страница отображается первый раз, либо есть ошибка в данных
-//            return $this->render('index', ['model' => $model, 'pagetitle' => $pagetitle]);
+        return $this->render('index', [
+                    'postall' => $postall,
+                    'pagination' => $pagination,
+                    'model' => $model,
+                    'pagetitle' => $pagetitle
+        ]);
     }
 
     public function actionEdit()
